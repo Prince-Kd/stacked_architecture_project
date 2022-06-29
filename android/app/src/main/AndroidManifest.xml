@@ -6,7 +6,9 @@
         android:label="stacked_architecture_project"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <activity
+       <meta-data android:name="com.here.sdk.access_key_id" android:value="PQ2Mgcb5QblJZrMiCTAp5g"/>
+       <meta-data android:name="com.here.sdk.access_key_secret" android:value="lVbpWnHFpygkpdj3zCj_zqDE5ESCXmzNKCGSMsIrCAFQni2hkC9ejc2r6ouy1OltuQdVovPqeLJ1OsKRNvWQhQ"/>
+       <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
@@ -32,5 +34,5 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-    </application>
+       </application>
 </manifest>

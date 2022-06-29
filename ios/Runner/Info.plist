@@ -47,5 +47,14 @@
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<key>HERECredentials</key>
+    <dict>
+        <key>AccessKeyId</key>
+        <string>PQ2Mgcb5QblJZrMiCTAp5g</string>
+        <key>AccessKeySecret</key>
+        <string>lVbpWnHFpygkpdj3zCj_zqDE5ESCXmzNKCGSMsIrCAFQni2hkC9ejc2r6ouy1OltuQdVovPqeLJ1OsKRNvWQhQ</string>
+    </dict>
+    <key>io.flutter.embedded_views_preview</key>
+    <true/>
 </dict>
 </plist>

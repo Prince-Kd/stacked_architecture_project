@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_architecture_project/app/app.locator.dart';
+import 'package:stacked_architecture_project/app/app.router.dart';
+import 'package:stacked_architecture_project/hive_box.dart';
 import 'package:stacked_architecture_project/ui/views/startup/startup_view.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -17,7 +19,14 @@ class OnboardingViewModel extends BaseViewModel{
     notifyListeners();
   }
 
+  onboardingCompleted(){
+    if(onboardingComplete){
+      _nagivationService.navigateToHomeView;
+    }
+  }
+
   completeOnboarding(){
+    hiveBox.put('onboardingComplete', true);
     _nagivationService.clearStackAndShowView(const StartupView());
   }
 

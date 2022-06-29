@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:here_sdk/core.dart';
 import 'package:stacked_architecture_project/app/app.locator.dart';
 import 'package:stacked_architecture_project/app/app.router.dart';
-import 'package:stacked_architecture_project/ui/views/home/home_view.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 Future main() async{
+  await Hive.initFlutter();
+  await Hive.openBox('settings');
+  SdkContext.init(IsolateOrigin.main);
   setupLocator();
   runApp(const MyApp());
 }

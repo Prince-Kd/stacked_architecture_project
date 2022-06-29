@@ -5,6 +5,8 @@ import 'package:stacked_architecture_project/ui/views/onboarding/onboarding_view
 import 'package:stacked_architecture_project/ui/views/startup/startup_view.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+
+
 @StackedApp(
   routes: [
     MaterialRoute(page: OnboardingView, initial: true),

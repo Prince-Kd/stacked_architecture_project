@@ -13,6 +13,7 @@ class OnboardingView extends StatelessWidget {
 
     return ViewModelBuilder<OnboardingViewModel>.reactive(
         viewModelBuilder: () => OnboardingViewModel(),
+        onModelReady: (OnboardingViewModel onboardingViewModel) => onboardingViewModel.onboardingCompleted,
         builder: (context, model, child) {
           return Scaffold(
             body: SizedBox(
