@@ -1,8 +1,11 @@
+import 'package:here_sdk/gestures.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart' as l;
 import 'package:stacked/stacked.dart';
 import 'package:here_sdk/core.dart';
 import 'package:here_sdk/mapview.dart';
+
+typedef ShowDialogFunction = void Function(String title, String message);
 
 class MapViewModel extends BaseViewModel {
   MapViewModel() {
@@ -45,6 +48,24 @@ class MapViewModel extends BaseViewModel {
       hereMapController.mapScene.addMapMarker(mapMarker);
     }
 
+    String _toString(GeoCoordinates? geoCoordinates) {
+      if (geoCoordinates == null) {
+        // This can happen, when there is no map view touched, for example, when the screen was tilted and
+        // the touch point is on the horizon.
+        return "Error: No valid geo coordinates.";
+      }
+
+      return geoCoordinates.latitude.toString() + ", " + geoCoordinates.longitude.toString();
+    }
+
+    void _setTapGestureHandler() {
+      hereMapController.gestures.tapListener = TapListener((Point2D touchPoint) {
+        var geoCoordinates = _toString(hereMapController.viewToGeoCoordinates(touchPoint));
+        print('Tap at: $geoCoordinates');
+      });
+    }
+
+
     hereMapController.mapScene.loadSceneForMapScheme(MapScheme.normalDay,
         (MapError? error) {
       if (error != null) {
@@ -64,6 +85,7 @@ class MapViewModel extends BaseViewModel {
       hereMapController.mapScene.setLayerVisibility(
           MapSceneLayers.landmarks, VisibilityState.visible);
       _addMapMarker(GeoCoordinates(5.6628, -0.1309));
+      _setTapGestureHandler();
     });
   }
 
